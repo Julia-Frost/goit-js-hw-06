@@ -1,4 +1,4 @@
-const button = document.querySelector("button.change-color");
+const button = document.querySelector(".change-color");
 const body = document.querySelector("body");
 const textEl = document.querySelector(".color");
 

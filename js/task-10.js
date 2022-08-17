@@ -1,19 +1,34 @@
-let numberInput = document.querySelector("#controls input");
-console.log(numberInput);
-let createBtn = document.querySelector("[data-create]");
+const inputEl = document.querySelector("#controls input");
+console.log(inputEl);
+const createBtn = document.querySelector("[data-create]");
 console.log(createBtn);
-let destroyBtn = document.querySelector("[data-destroy]");
+const destroyBtn = document.querySelector("[data-destroy]");
 console.log(destroyBtn);
+const boxesArrey = document.querySelector("#boxes");
+console.log(boxesArrey);
+let numberToCreate = 0;
+const createdElements = [];
+inputEl.addEventListener("input", () => (numberToCreate = inputEl.value));
 
-numberInput.addEventListener("click, ");
+let size = 30;
+
 createBtn.addEventListener("click", () => {
-  console.log("zacreatsilos");
+  for (let i = 0; i <= numberToCreate; i += 1) {
+    const createdEl = document.createElement("div");
+    createdEl.style.backgroundColor = getRandomHexColor();
+    createdEl.style.width = `${size + i * 10}px`;
+    createdEl.style.height = `${size + i * 10}px`;
+    createdElements.push(createdEl);
+  }
 });
+boxesArrey.appendChild(...createdElements);
 
 destroyBtn.addEventListener("click", () => {
   console.log("zadestroilos");
 });
 
 function getRandomHexColor() {
-  return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+  return `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, 0)}`;
 }

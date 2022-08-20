@@ -1,35 +1,35 @@
 const inputEl = document.querySelector("#controls input");
-console.log(inputEl);
 const createBtn = document.querySelector("[data-create]");
-console.log(createBtn);
 const destroyBtn = document.querySelector("[data-destroy]");
-console.log(destroyBtn);
 const boxesArrey = document.querySelector("#boxes");
-console.log(boxesArrey);
-let numberToCreate = 0;
-const createdElements = [];
-inputEl.addEventListener("input", () => (numberToCreate = inputEl.value));
-console.log("numberToCreate", numberToCreate);
-let size = 30;
 
 createBtn.addEventListener("click", () => {
-  for (let i = 0; i <= numberToCreate; i += 1) {
-    const createdEl = document.createElement("div");
-    createdEl.style.backgroundColor = getRandomHexColor();
-    createdEl.style.width = `${size + i * 10}px`;
-    createdEl.style.height = `${size + i * 10}px`;
-    createdElements.push(createdEl);
-  }
+  let amount = inputEl.value;
+  createBoxes(amount);
 });
-console.log("createdElements", createdElements);
-boxesArrey.appendChild(...createdElements);
+
+function createBoxes(amount) {
+  // задаем базовые размеры блока
+  let baseSize = 30;
+  // создаем новый фрагмент
+  let fragment = document.createDocumentFragment();
+  for (let i = 0; i < amount; i += 1) {
+    // Кожен елемент після першого повинен бути ширшим і вищим від попереднього на 10px.
+    let size = baseSize + i * 10;
+    // создаем див
+    let div = document.createElement("div");
+    div.style.cssText = `width: ${size}px; height: ${size}px; background-color:${getRandomHexColor()}`;
+    // запихуем в фрагмент тег див
+    fragment.appendChild(div);
+  }
+  // добавляем новосозданные див(ы) в родительский блок
+  boxes.appendChild(fragment);
+}
 
 destroyBtn.addEventListener("click", () => {
-  console.log("zadestroilos");
+  boxes.innerHTML = "";
 });
 
 function getRandomHexColor() {
-  return `#${Math.floor(Math.random() * 16777215)
-    .toString(16)
-    .padStart(6, 0)}`;
+  return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }

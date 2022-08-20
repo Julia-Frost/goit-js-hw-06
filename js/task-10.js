@@ -9,7 +9,7 @@ console.log(boxesArrey);
 let numberToCreate = 0;
 const createdElements = [];
 inputEl.addEventListener("input", () => (numberToCreate = inputEl.value));
-
+console.log("numberToCreate", numberToCreate);
 let size = 30;
 
 createBtn.addEventListener("click", () => {
@@ -21,6 +21,7 @@ createBtn.addEventListener("click", () => {
     createdElements.push(createdEl);
   }
 });
+console.log("createdElements", createdElements);
 boxesArrey.appendChild(...createdElements);
 
 destroyBtn.addEventListener("click", () => {

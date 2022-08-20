@@ -1,6 +1,4 @@
 const formEl = document.querySelector(".login-form");
-const buttonSubmit = document.querySelector("button");
-const inputEl = document.querySelectorAll("input");
 
 formEl.addEventListener("submit", onFormSubmit);
 
@@ -26,4 +24,5 @@ function onFormSubmit(event) {
   } else {
     console.log(formData);
   }
+  formEl.reset();
 }

@@ -13,12 +13,16 @@ const images = [
   },
 ];
 
-const list = document.querySelector(".gallery");
-list.style.listStyle = "none";
+function addImages() {
+  const list = document.querySelector(".gallery");
+  list.style.listStyle = "none";
 
-images.forEach((image) => {
-  list.insertAdjacentHTML(
-    "beforeend",
-    `<li><img src="${image.url}" alt="${image.alt}" width="300"></li>`
-  );
-});
+  images.forEach((image) => {
+    list.insertAdjacentHTML(
+      "beforeend",
+      `<li><img src="${image.url}" alt="${image.alt}" width="300"></li>`
+    );
+  });
+}
+
+addImages();
